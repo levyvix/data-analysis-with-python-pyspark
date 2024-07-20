@@ -3,6 +3,7 @@
 
 # %%
 from pyspark.sql import SparkSession
+
 spark = SparkSession.builder.getOrCreate()
 
 # stop being lazy (no!)
@@ -27,8 +28,7 @@ dir(spark.read)
 # spark.read.csv() === spark.read.format('csv').load()
 
 # %%
-spark.read?
-spark.read??
+spark.read
 print(spark.read.__doc__)
 
 # %%
@@ -104,6 +104,7 @@ words.printSchema()
 
 # %%
 from pyspark.sql.functions import lower
+
 words_lower = words.select(lower(col("word")).alias("word_lower"))
 
 words_lower.show(100)
@@ -113,7 +114,7 @@ from pyspark.sql.functions import regexp_extract
 
 words_clean = words_lower.select(
     # regexp_extract(col("word_lower"), "[a-z]*", 0).alias("word")
-    regexp_extract(col("word_lower"),  r"(\W+)?([a-z]+)", 2).alias("word")
+    regexp_extract(col("word_lower"), r"(\W+)?([a-z]+)", 2).alias("word")
 )
 
 words_clean.show(100)

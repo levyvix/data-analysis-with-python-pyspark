@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "data-analysis-with-python-and-pyspark"
+version = "0.1.0"
+description = ""
+authors = ["Levy Marques Nunes <levy.vix@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pyspark = "^3.5.1"
+pandas = "^2.2.2"
+ipykernel = "^6.29.5"
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
