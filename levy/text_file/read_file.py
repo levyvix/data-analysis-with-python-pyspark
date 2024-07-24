@@ -7,7 +7,7 @@ spark.sparkContext.setLogLevel("WARN")
 
 # Ler arquivo CSV
 results = (
-    spark.read.text("../data/gutenberg_books/1342-0.txt")
+    spark.read.text("../data/gutenberg_books/*.txt")
     .select(f.split(f.col("value"), " ").alias("line"))
     .select(f.explode(f.col("line")).alias("word"))
     .select(f.lower(f.col("word")).alias("words_lower"))
